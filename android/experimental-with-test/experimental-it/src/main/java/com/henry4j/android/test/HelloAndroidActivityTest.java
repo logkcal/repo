@@ -13,15 +13,4 @@ public class HelloAndroidActivityTest extends ActivityInstrumentationTestCase2<H
         HelloAndroidActivity activity = getActivity();
         assertNotNull(activity);
     }
-
-    public void testError() {
-        int i = 1;
-        int j = 0;
-        int k = i / j;
-    }
-
-    public void testFailure() {
-        assertNotNull(null);
-    }
 }
-

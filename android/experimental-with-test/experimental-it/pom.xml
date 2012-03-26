@@ -44,6 +44,24 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jruby-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>emulator-create</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <ruby>
+                                system %Q* echo | android create avd -f -n 15 -t `android list targets | awk '/android-15/ {print $2}'` * unless `android list avd -c`.split("\n").include? '15'
+                            </ruby>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <configuration>
@@ -54,17 +72,30 @@
                     <sdk>
                         <platform>15</platform>
                     </sdk>
-                                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    <emulator>
+                        <avd>15</avd>
+                        <wait>60000</wait>
+                    </emulator>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>
                 <extensions>true</extensions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
+                <executions>
+                    <execution>
+                        <id>startemulator</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>emulator-start</goal>
+                        </goals>
+                    </execution>
+                </executions>
+             </plugin>
+             <plugin>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <configuration>
+                     <source>1.5</source>
+                     <target>1.5</target>
+                 </configuration>
+             </plugin>
         </plugins>
     </build>
 </project>
