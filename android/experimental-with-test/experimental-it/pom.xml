@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.henry4j.android</groupId>
         <artifactId>experimental-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>mvn clean install</version>
     </parent>
 
     <groupId>com.henry4j.android</groupId>
     <artifactId>experimental-it-it</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>mvn clean install</version>
     <packaging>apk</packaging>
     <name>experimental-it - Integration tests</name>
 
@@ -28,13 +28,13 @@
             <groupId>com.henry4j.android</groupId>
             <artifactId>experimental</artifactId>
             <type>apk</type>
-            <version>1.0-SNAPSHOT</version>
+            <version>mvn clean install</version>
         </dependency>
         <dependency>
             <groupId>com.henry4j.android</groupId>
             <artifactId>experimental</artifactId>
             <type>jar</type>
-            <version>1.0-SNAPSHOT</version>
+            <version>mvn clean install</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -43,25 +43,6 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jruby-maven-plugin</artifactId>
-                <version>1.0-beta-4</version>
-                <executions>
-                    <execution>
-                        <id>android create avd -n 15</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <ruby>
-                                system %Q* echo | android create avd -n 15 -t `android list targets | awk '/android-15/ {print $2}'` * unless `android list avd -c`.split("\n").include? '15'
-                            </ruby>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
@@ -73,30 +54,17 @@
                     <sdk>
                         <platform>15</platform>
                     </sdk>
-                    <emulator>
-                        <avd>15</avd>
-                        <wait>60000</wait>
-                    </emulator>
-                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>emulator-start</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>emulator-start</goal>
-                        </goals>
-                    </execution>
-                </executions>
-             </plugin>
-             <plugin>
-                 <artifactId>maven-compiler-plugin</artifactId>
-                 <configuration>
-                     <source>1.5</source>
-                     <target>1.5</target>
-                 </configuration>
-             </plugin>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

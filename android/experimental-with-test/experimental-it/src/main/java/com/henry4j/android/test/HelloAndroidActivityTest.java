@@ -14,3 +14,4 @@ public class HelloAndroidActivityTest extends ActivityInstrumentationTestCase2<H
         assertNotNull(activity);
     }
 }
+

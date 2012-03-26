@@ -6,12 +6,12 @@
   <parent>
     <groupId>com.henry4j.android</groupId>
     <artifactId>experimental-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>mvn clean install</version>
   </parent>
 
   <groupId>com.henry4j.android</groupId>
   <artifactId>experimental</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>mvn clean install</version>
   <packaging>apk</packaging>
   <name>experimental - Application</name>
 
