@@ -46,6 +46,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jruby-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
                 <executions>
                     <execution>
                         <id>android create avd -n 15</id>
