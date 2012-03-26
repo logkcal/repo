@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.henry4j.android</groupId>
     <artifactId>experimental-parent</artifactId>
-    <version>mvn clean install</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>experimental - Parent</name>
 
