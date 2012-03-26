@@ -48,14 +48,14 @@
                 <artifactId>jruby-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>emulator-create</id>
+                        <id>android create avd -n 15</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <ruby>
-                                system %Q* echo | android create avd -f -n 15 -t `android list targets | awk '/android-15/ {print $2}'` * unless `android list avd -c`.split("\n").include? '15'
+                                system %Q* echo | android create avd -n 15 -t `android list targets | awk '/android-15/ {print $2}'` * unless `android list avd -c`.split("\n").include? '15'
                             </ruby>
                         </configuration>
                     </execution>
@@ -81,7 +81,7 @@
                 <extensions>true</extensions>
                 <executions>
                     <execution>
-                        <id>startemulator</id>
+                        <id>emulator-start</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>emulator-start</goal>
